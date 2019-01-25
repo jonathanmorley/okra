@@ -48,11 +48,11 @@ impl EmailAddress {
     self.status = None;
   }
 
-  pub fn set__type(&mut self, _type: crate::models::EmailType) {
+  pub fn set_type(&mut self, _type: crate::models::EmailType) {
     self._type = Some(_type);
   }
 
-  pub fn with__type(mut self, _type: crate::models::EmailType) -> EmailAddress {
+  pub fn with_type(mut self, _type: crate::models::EmailType) -> EmailAddress {
     self._type = Some(_type);
     self
   }
@@ -61,7 +61,7 @@ impl EmailAddress {
     self._type.as_ref()
   }
 
-  pub fn reset__type(&mut self) {
+  pub fn reset_type(&mut self) {
     self._type = None;
   }
 

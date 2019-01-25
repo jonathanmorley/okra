@@ -70,11 +70,11 @@ impl JsonWebKey {
     }
   }
 
-  pub fn set__links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
+  pub fn set_links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
     self._links = Some(_links);
   }
 
-  pub fn with__links(mut self, _links: ::std::collections::HashMap<String, Value>) -> JsonWebKey {
+  pub fn with_links(mut self, _links: ::std::collections::HashMap<String, Value>) -> JsonWebKey {
     self._links = Some(_links);
     self
   }
@@ -83,7 +83,7 @@ impl JsonWebKey {
     self._links.as_ref()
   }
 
-  pub fn reset__links(&mut self) {
+  pub fn reset_links(&mut self) {
     self._links = None;
   }
 
@@ -257,11 +257,11 @@ impl JsonWebKey {
     self.status = None;
   }
 
-  pub fn set__use(&mut self, _use: String) {
+  pub fn set_use(&mut self, _use: String) {
     self._use = Some(_use);
   }
 
-  pub fn with__use(mut self, _use: String) -> JsonWebKey {
+  pub fn with_use(mut self, _use: String) -> JsonWebKey {
     self._use = Some(_use);
     self
   }
@@ -270,7 +270,7 @@ impl JsonWebKey {
     self._use.as_ref()
   }
 
-  pub fn reset__use(&mut self) {
+  pub fn reset_use(&mut self) {
     self._use = None;
   }
 

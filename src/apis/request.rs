@@ -184,7 +184,8 @@ impl Request {
         }
 
         if self.form_params.len() > 0 {
-            req.headers_mut().set(hyper::header::ContentType::form_url_encoded());
+            req.headers_mut()
+                .set(hyper::header::ContentType::form_url_encoded());
             let mut enc = ::url::form_urlencoded::Serializer::new("".to_owned());
             for (k, v) in self.form_params {
                 enc.append_pair(&k, &v);
@@ -200,39 +201,37 @@ impl Request {
         }
 
         let no_ret_type = self.no_return_type;
-        let res = conf.client
-                .request(req)
-                .map_err(|e| Error::from(e))
-                .and_then(|resp| {
-                    let status = resp.status();
-                    resp.body()
-                        .concat2()
-                        .and_then(move |body| Ok((status, body)))
-                        .map_err(|e| Error::from(e))
-                })
-                .and_then(|(status, body)| {
-                    if status.is_success() {
-                        Ok(body)
-                    } else {
-                        Err(Error::from((status, &*body)))
-                    }
-                });
-        Box::new(
-            res
-                .and_then(move |body| {
-                    let parsed: Result<U, _> = if no_ret_type {
-                        // This is a hack; if there's no_ret_type, U is (), but serde_json gives an
-                        // error when deserializing "" into (), so deserialize 'null' into it
-                        // instead.
-                        // An alternate option would be to require U: Default, and then return
-                        // U::default() here instead since () implements that, but then we'd
-                        // need to impl default for all models.
-                        serde_json::from_str("null")
-                    } else {
-                        serde_json::from_slice(&body)
-                    };
-                    parsed.map_err(|e| Error::from(e))
-                })
-        )
+        let res = conf
+            .client
+            .request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body()
+                    .concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            });
+        Box::new(res.and_then(move |body| {
+            let parsed: Result<U, _> = if no_ret_type {
+                // This is a hack; if there's no_ret_type, U is (), but serde_json gives an
+                // error when deserializing "" into (), so deserialize 'null' into it
+                // instead.
+                // An alternate option would be to require U: Default, and then return
+                // U::default() here instead since () implements that, but then we'd
+                // need to impl default for all models.
+                serde_json::from_str("null")
+            } else {
+                serde_json::from_slice(&body)
+            };
+            parsed.map_err(|e| Error::from(e))
+        }))
     }
 }

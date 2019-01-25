@@ -55,11 +55,11 @@ impl Policy {
     }
   }
 
-  pub fn set__embedded(&mut self, _embedded: ::std::collections::HashMap<String, Value>) {
+  pub fn set_embedded(&mut self, _embedded: ::std::collections::HashMap<String, Value>) {
     self._embedded = Some(_embedded);
   }
 
-  pub fn with__embedded(mut self, _embedded: ::std::collections::HashMap<String, Value>) -> Policy {
+  pub fn with_embedded(mut self, _embedded: ::std::collections::HashMap<String, Value>) -> Policy {
     self._embedded = Some(_embedded);
     self
   }
@@ -68,15 +68,15 @@ impl Policy {
     self._embedded.as_ref()
   }
 
-  pub fn reset__embedded(&mut self) {
+  pub fn reset_embedded(&mut self) {
     self._embedded = None;
   }
 
-  pub fn set__links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
+  pub fn set_links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
     self._links = Some(_links);
   }
 
-  pub fn with__links(mut self, _links: ::std::collections::HashMap<String, Value>) -> Policy {
+  pub fn with_links(mut self, _links: ::std::collections::HashMap<String, Value>) -> Policy {
     self._links = Some(_links);
     self
   }
@@ -85,7 +85,7 @@ impl Policy {
     self._links.as_ref()
   }
 
-  pub fn reset__links(&mut self) {
+  pub fn reset_links(&mut self) {
     self._links = None;
   }
 
@@ -225,11 +225,11 @@ impl Policy {
     self.system = None;
   }
 
-  pub fn set__type(&mut self, _type: crate::models::PolicyType) {
+  pub fn set_type(&mut self, _type: crate::models::PolicyType) {
     self._type = Some(_type);
   }
 
-  pub fn with__type(mut self, _type: crate::models::PolicyType) -> Policy {
+  pub fn with_type(mut self, _type: crate::models::PolicyType) -> Policy {
     self._type = Some(_type);
     self
   }
@@ -238,7 +238,7 @@ impl Policy {
     self._type.as_ref()
   }
 
-  pub fn reset__type(&mut self) {
+  pub fn reset_type(&mut self) {
     self._type = None;
   }
 

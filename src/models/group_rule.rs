@@ -52,11 +52,11 @@ impl GroupRule {
     }
   }
 
-  pub fn set__embedded(&mut self, _embedded: ::std::collections::HashMap<String, Value>) {
+  pub fn set_embedded(&mut self, _embedded: ::std::collections::HashMap<String, Value>) {
     self._embedded = Some(_embedded);
   }
 
-  pub fn with__embedded(mut self, _embedded: ::std::collections::HashMap<String, Value>) -> GroupRule {
+  pub fn with_embedded(mut self, _embedded: ::std::collections::HashMap<String, Value>) -> GroupRule {
     self._embedded = Some(_embedded);
     self
   }
@@ -65,7 +65,7 @@ impl GroupRule {
     self._embedded.as_ref()
   }
 
-  pub fn reset__embedded(&mut self) {
+  pub fn reset_embedded(&mut self) {
     self._embedded = None;
   }
 
@@ -205,11 +205,11 @@ impl GroupRule {
     self.status = None;
   }
 
-  pub fn set__type(&mut self, _type: String) {
+  pub fn set_type(&mut self, _type: String) {
     self._type = Some(_type);
   }
 
-  pub fn with__type(mut self, _type: String) -> GroupRule {
+  pub fn with_type(mut self, _type: String) -> GroupRule {
     self._type = Some(_type);
     self
   }
@@ -218,7 +218,7 @@ impl GroupRule {
     self._type.as_ref()
   }
 
-  pub fn reset__type(&mut self) {
+  pub fn reset_type(&mut self) {
     self._type = None;
   }
 

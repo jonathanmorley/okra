@@ -16,7 +16,7 @@ use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
-use super::request as __internal_request;
+use super::request as _internal_request;
 
 pub struct LogApiClient<C: hyper::client::Connect> {
     configuration: Rc<configuration::Configuration<C>>,
@@ -37,8 +37,8 @@ pub trait LogApi {
 
 impl<C: hyper::client::Connect>LogApi for LogApiClient<C> {
     fn get_logs(&self, until: &str, since: &str, filter: &str, q: &str, limit: i32, sort_order: &str, after: &str) -> Box<Future<Item = Vec<crate::models::LogEvent>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/logs".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/logs".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),

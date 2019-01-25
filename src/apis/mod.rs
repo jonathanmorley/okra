@@ -49,8 +49,6 @@ impl<T> From<serde_json::Error> for Error<T> {
     }
 }
 
-use crate::models::*;
-
 mod request;
 
 mod application_api;

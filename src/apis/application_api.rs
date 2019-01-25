@@ -16,7 +16,7 @@ use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
-use super::request as __internal_request;
+use super::request as _internal_request;
 
 pub struct ApplicationApiClient<C: hyper::client::Connect> {
     configuration: Rc<configuration::Configuration<C>>,
@@ -55,8 +55,8 @@ pub trait ApplicationApi {
 
 impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     fn activate_application(&self, app_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/lifecycle/activate".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/lifecycle/activate".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -67,8 +67,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn assign_user_to_application(&self, app_id: &str, app_user: crate::models::AppUser) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/users".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/users".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -79,8 +79,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn clone_application_key(&self, app_id: &str, key_id: &str, target_aid: &str) -> Box<Future<Item = crate::models::JsonWebKey, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/credentials/keys/{keyId}/clone".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/credentials/keys/{keyId}/clone".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -92,8 +92,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn create_application(&self, application: crate::models::Application, activate: bool) -> Box<Future<Item = crate::models::Application, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/apps".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -104,8 +104,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn create_application_group_assignment(&self, app_id: &str, group_id: &str, application_group_assignment: crate::models::ApplicationGroupAssignment) -> Box<Future<Item = crate::models::ApplicationGroupAssignment, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Put, "/api/v1/apps/{appId}/groups/{groupId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Put, "/api/v1/apps/{appId}/groups/{groupId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -117,8 +117,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn deactivate_application(&self, app_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/lifecycle/deactivate".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/lifecycle/deactivate".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -129,8 +129,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn delete_application(&self, app_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -141,8 +141,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn delete_application_group_assignment(&self, app_id: &str, group_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}/groups/{groupId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}/groups/{groupId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -154,8 +154,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn delete_application_user(&self, app_id: &str, user_id: &str, send_email: bool) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}/users/{userId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}/users/{userId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -168,8 +168,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn get_application(&self, app_id: &str, expand: &str) -> Box<Future<Item = crate::models::Application, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -180,8 +180,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn get_application_group_assignment(&self, app_id: &str, group_id: &str, expand: &str) -> Box<Future<Item = crate::models::ApplicationGroupAssignment, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/groups/{groupId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/groups/{groupId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -193,8 +193,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn get_application_key(&self, app_id: &str, key_id: &str) -> Box<Future<Item = crate::models::JsonWebKey, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/credentials/keys/{keyId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/credentials/keys/{keyId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -205,8 +205,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn get_application_user(&self, app_id: &str, user_id: &str, expand: &str) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/users/{userId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/users/{userId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -218,8 +218,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn list_application_group_assignments(&self, app_id: &str, q: &str, after: &str, limit: i32, expand: &str) -> Box<Future<Item = Vec<crate::models::ApplicationGroupAssignment>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/groups".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/groups".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -233,8 +233,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn list_application_keys(&self, app_id: &str) -> Box<Future<Item = Vec<crate::models::JsonWebKey>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/credentials/keys".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/credentials/keys".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -244,8 +244,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn list_application_users(&self, app_id: &str, q: &str, query_scope: &str, after: &str, limit: i32, filter: &str, expand: &str) -> Box<Future<Item = Vec<crate::models::AppUser>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/users".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}/users".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -261,8 +261,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn list_applications(&self, q: &str, after: &str, limit: i32, filter: &str, expand: &str, include_non_deleted: bool) -> Box<Future<Item = Vec<crate::models::Application>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/apps".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -277,8 +277,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn update_application(&self, app_id: &str, application: crate::models::Application) -> Box<Future<Item = crate::models::Application, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Put, "/api/v1/apps/{appId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Put, "/api/v1/apps/{appId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -289,8 +289,8 @@ impl<C: hyper::client::Connect>ApplicationApi for ApplicationApiClient<C> {
     }
 
     fn update_application_user(&self, app_id: &str, user_id: &str, app_user: crate::models::AppUser) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/users/{userId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps/{appId}/users/{userId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),

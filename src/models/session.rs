@@ -55,11 +55,11 @@ impl Session {
     }
   }
 
-  pub fn set__links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
+  pub fn set_links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
     self._links = Some(_links);
   }
 
-  pub fn with__links(mut self, _links: ::std::collections::HashMap<String, Value>) -> Session {
+  pub fn with_links(mut self, _links: ::std::collections::HashMap<String, Value>) -> Session {
     self._links = Some(_links);
     self
   }
@@ -68,7 +68,7 @@ impl Session {
     self._links.as_ref()
   }
 
-  pub fn reset__links(&mut self) {
+  pub fn reset_links(&mut self) {
     self._links = None;
   }
 

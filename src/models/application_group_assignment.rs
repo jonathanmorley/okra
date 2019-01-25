@@ -40,11 +40,11 @@ impl ApplicationGroupAssignment {
     }
   }
 
-  pub fn set__embedded(&mut self, _embedded: ::std::collections::HashMap<String, Value>) {
+  pub fn set_embedded(&mut self, _embedded: ::std::collections::HashMap<String, Value>) {
     self._embedded = Some(_embedded);
   }
 
-  pub fn with__embedded(mut self, _embedded: ::std::collections::HashMap<String, Value>) -> ApplicationGroupAssignment {
+  pub fn with_embedded(mut self, _embedded: ::std::collections::HashMap<String, Value>) -> ApplicationGroupAssignment {
     self._embedded = Some(_embedded);
     self
   }
@@ -53,15 +53,15 @@ impl ApplicationGroupAssignment {
     self._embedded.as_ref()
   }
 
-  pub fn reset__embedded(&mut self) {
+  pub fn reset_embedded(&mut self) {
     self._embedded = None;
   }
 
-  pub fn set__links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
+  pub fn set_links(&mut self, _links: ::std::collections::HashMap<String, Value>) {
     self._links = Some(_links);
   }
 
-  pub fn with__links(mut self, _links: ::std::collections::HashMap<String, Value>) -> ApplicationGroupAssignment {
+  pub fn with_links(mut self, _links: ::std::collections::HashMap<String, Value>) -> ApplicationGroupAssignment {
     self._links = Some(_links);
     self
   }
@@ -70,7 +70,7 @@ impl ApplicationGroupAssignment {
     self._links.as_ref()
   }
 
-  pub fn reset__links(&mut self) {
+  pub fn reset_links(&mut self) {
     self._links = None;
   }
 

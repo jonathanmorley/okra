@@ -16,7 +16,7 @@ use serde_json;
 use futures::Future;
 
 use super::{Error, configuration};
-use super::request as __internal_request;
+use super::request as _internal_request;
 
 pub struct PolicyApiClient<C: hyper::client::Connect> {
     configuration: Rc<configuration::Configuration<C>>,
@@ -50,8 +50,8 @@ pub trait PolicyApi {
 
 impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     fn activate_policy(&self, policy_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/lifecycle/activate".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/lifecycle/activate".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -62,8 +62,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn activate_policy_rule(&self, policy_id: &str, rule_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/activate".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/activate".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -75,8 +75,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn add_policy_rule(&self, policy_id: &str, policy_rule: crate::models::PolicyRule, activate: bool) -> Box<Future<Item = crate::models::PolicyRule, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/rules".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/rules".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -88,8 +88,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn create_policy(&self, policy: crate::models::Policy, activate: bool) -> Box<Future<Item = crate::models::Policy, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/policies".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/policies".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -100,8 +100,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn deactivate_policy(&self, policy_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/lifecycle/deactivate".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/lifecycle/deactivate".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -112,8 +112,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn deactivate_policy_rule(&self, policy_id: &str, rule_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Post, "/api/v1/policies/{policyId}/rules/{ruleId}/lifecycle/deactivate".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -125,8 +125,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn delete_policy(&self, policy_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Delete, "/api/v1/policies/{policyId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/policies/{policyId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -137,8 +137,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn delete_policy_rule(&self, policy_id: &str, rule_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Delete, "/api/v1/policies/{policyId}/rules/{ruleId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/policies/{policyId}/rules/{ruleId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -150,8 +150,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn get_policy(&self, policy_id: &str, expand: &str) -> Box<Future<Item = crate::models::Policy, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/policies/{policyId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/policies/{policyId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -162,8 +162,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn get_policy_rule(&self, policy_id: &str, rule_id: &str) -> Box<Future<Item = crate::models::PolicyRule, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/policies/{policyId}/rules/{ruleId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/policies/{policyId}/rules/{ruleId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -174,8 +174,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn list_policies(&self, _type: &str, status: &str, after: &str, limit: i32, expand: &str) -> Box<Future<Item = Vec<crate::models::Policy>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/policies".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/policies".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -189,8 +189,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn list_policy_rules(&self, policy_id: &str) -> Box<Future<Item = Vec<crate::models::PolicyRule>, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Get, "/api/v1/policies/{policyId}/rules".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Get, "/api/v1/policies/{policyId}/rules".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -200,8 +200,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn update_policy(&self, policy_id: &str, policy: crate::models::Policy) -> Box<Future<Item = crate::models::Policy, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Put, "/api/v1/policies/{policyId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Put, "/api/v1/policies/{policyId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),
@@ -212,8 +212,8 @@ impl<C: hyper::client::Connect>PolicyApi for PolicyApiClient<C> {
     }
 
     fn update_policy_rule(&self, policy_id: &str, rule_id: &str, policy_rule: crate::models::PolicyRule) -> Box<Future<Item = crate::models::PolicyRule, Error = Error<serde_json::Value>>> {
-        __internal_request::Request::new(hyper::Method::Put, "/api/v1/policies/{policyId}/rules/{ruleId}".to_string())
-            .with_auth(__internal_request::Auth::ApiKey(__internal_request::ApiKey{
+        _internal_request::Request::new(hyper::Method::Put, "/api/v1/policies/{policyId}/rules/{ruleId}".to_string())
+            .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey{
                 in_header: true,
                 in_query: false,
                 param_name: "Authorization".to_owned(),

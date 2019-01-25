@@ -288,9 +288,14 @@ Class | Method | HTTP request | Description
 
 ## Rebuilding from OpenAPI
 
+1. Build the client from OpenAPI specs
 ```
 docker run --rm -v $(pwd):$(pwd) -w $(pwd) openapitools/openapi-generator-cli generate \
     -i api.yaml \
     -g rust \
     -o out
 ```
+
+2. Replace all `::models` with `crate::models` and `::apis` with `crate::apis`
+3. Replace all `__` with `_`
+4. Add some constructors to `apis::configuration::Configuration`

@@ -1,4 +1,4 @@
-/* 
+/*
  * Okta API
  *
  * Allows customers to easily access the Okta API
@@ -9,34 +9,68 @@
  */
 
 use hyper;
-use std::collections::HashMap;
 
 pub struct Configuration<C: hyper::client::Connect> {
-  pub base_path: String,
-  pub user_agent: Option<String>,
-  pub client: hyper::client::Client<C>,
-  pub basic_auth: Option<BasicAuth>,
-  pub oauth_access_token: Option<String>,
-  pub api_key: Option<ApiKey>,
-  // TODO: take an oauth2 token source, similar to the go one
+    pub base_path: String,
+    pub user_agent: Option<String>,
+    pub client: hyper::client::Client<C>,
+    pub basic_auth: Option<BasicAuth>,
+    pub oauth_access_token: Option<String>,
+    pub api_key: Option<ApiKey>,
+    // TODO: take an oauth2 token source, similar to the go one
 }
 
 pub type BasicAuth = (String, Option<String>);
 
 pub struct ApiKey {
-  pub prefix: Option<String>,
-  pub key: String,
+    pub prefix: Option<String>,
+    pub key: String,
 }
 
-impl<C: hyper::client::Connect> Configuration<C> {
-  pub fn new(client: hyper::client::Client<C>) -> Configuration<C> {
-    Configuration {
-      base_path: "https://your-subdomain.okta.com".to_owned(),
-      user_agent: Some("OpenAPI-Generator/1.9.0/rust".to_owned()),
-      client: client,
-      basic_auth: None,
-      oauth_access_token: None,
-      api_key: None,
+impl Configuration<hyper::client::HttpConnector> {
+    pub fn with_basic_auth(
+        handle: &tokio_core::reactor::Handle,
+        base_path: String,
+        username: String,
+        password: Option<String>,
+    ) -> Configuration<hyper::client::HttpConnector> {
+        Configuration {
+            base_path: base_path,
+            user_agent: Some("OpenAPI-Generator/1.9.0/rust".to_owned()),
+            client: hyper::client::Client::new(handle),
+            basic_auth: Some((username, password)),
+            oauth_access_token: None,
+            api_key: None,
+        }
     }
-  }
+
+    pub fn with_oauth_access_token(
+        handle: &tokio_core::reactor::Handle,
+        base_path: String,
+        access_token: String,
+    ) -> Configuration<hyper::client::HttpConnector> {
+        Configuration {
+            base_path: base_path,
+            user_agent: Some("OpenAPI-Generator/1.9.0/rust".to_owned()),
+            client: hyper::client::Client::new(handle),
+            basic_auth: None,
+            oauth_access_token: Some(access_token),
+            api_key: None,
+        }
+    }
+
+    pub fn with_api_key(
+        handle: &tokio_core::reactor::Handle,
+        base_path: String,
+        api_key: ApiKey,
+    ) -> Configuration<hyper::client::HttpConnector> {
+        Configuration {
+            base_path: base_path,
+            user_agent: Some("OpenAPI-Generator/1.9.0/rust".to_owned()),
+            client: hyper::client::Client::new(handle),
+            basic_auth: None,
+            oauth_access_token: None,
+            api_key: Some(api_key),
+        }
+    }
 }

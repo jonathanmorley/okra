@@ -1,4 +1,4 @@
-/* 
+/*
  * Okta API
  *
  * Allows customers to easily access the Okta API
@@ -18,22 +18,22 @@ use futures::Future;
 use super::{Error, configuration};
 use super::request as _internal_request;
 
-pub struct SessionApiClient<C: hyper::client::Connect> {
+pub struct AuthenticationApiClient<C: hyper::client::Connect> {
     configuration: Rc<configuration::Configuration<C>>,
 }
 
-impl<C: hyper::client::Connect> SessionApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> SessionApiClient<C> {
-        SessionApiClient {
+impl<C: hyper::client::Connect> AuthenticationApiClient<C> {
+    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> AuthenticationApiClient<C> {
+        AuthenticationApiClient {
             configuration: configuration,
         }
     }
 }
 
-pub trait SessionApi {
-    fn create_session(&self, create_session_request: crate::models::CreateSessionRequest) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>>;
-    fn end_session(&self, session_id: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn get_session(&self, session_id: &str) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>>;
+pub trait AuthenticationApi {
+    fn authenticate(&self, authenticate_request: crate::models::AuthenticateRequest) -> Box<Future<Item = crate::models::AuthenticateResponse, Error = Error<serde_json::Value>>>;
+    fn enroll_factor(&self, enroll_factor_request: crate::models::EnrollFactorRequest) -> Box<Future<Item = crate::models::EnrollFactorResponse, Error = Error<serde_json::Value>>>;
+    fn activate_factor(&self, session_id: &str) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>>;
     fn refresh_session(&self, session_id: &str) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>>;
 }
 

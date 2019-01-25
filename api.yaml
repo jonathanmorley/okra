@@ -2551,6 +2551,161 @@ paths:
         - api_token: []
       tags:
         - User
+  /api/v1/authn:
+    post:
+      consumes:
+        - application/json
+      description: >-
+        Every authentication transaction starts with primary authentication
+        which validates a user’s primary password credential. Password Policy,
+        MFA Policy, and Sign-On Policy are evaluated during primary
+        authentication to determine if the user’s password is expired, a factor
+        should be enrolled, or additional verification is required. The
+        transaction state of the response depends on the user’s status, group
+        memberships and assigned policies.
+      operationId: authenticate
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/AuthenticationRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AuthenticationTransaction'
+      security:
+        - api_token: []
+      tags:
+        - Authentication
+  /api/v1/authn/credentials/change_password:
+    post:
+      consumes:
+        - application/json
+      description: >-
+        This operation changes a user’s password by providing the existing
+        password and the new password password for authentication transactions
+        with either the PASSWORD_EXPIRED or PASSWORD_WARN state.
+      operationId: authChangePassword
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/ChangePasswordRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AuthenticationTransaction'
+      security:
+        - api_token: []
+      tags:
+        - Authentication
+  /api/v1/authn/factors:
+    post:
+      consumes:
+        - application/json
+      description: >-
+        You can enroll, activate, manage, and verify factors inside the
+        authentication context with /api/v1/authn/factors. This operation is
+        only available for users that have not previously enrolled a factor and
+        have transitioned to the MFA_ENROLL state.
+      operationId: enrollFactor
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/EnrollFactorRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AuthenticationTransaction'
+      security:
+        - api_token: []
+      tags:
+        - Authentication
+  '/api/v1/authn/factors/{factorId}/lifecycle/activate':
+    post:
+      consumes:
+        - application/json
+      description: >-
+        You can enroll, activate, manage, and verify factors inside the
+        authentication context with /api/v1/authn/factors. This operation is
+        only available for users that have not previously enrolled a factor and
+        have transitioned to the MFA_ENROLL state.
+      operationId: authActivateFactor
+      parameters:
+        - in: path
+          name: factorId
+          required: true
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/ActivateFactorRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AuthenticationTransaction'
+      security:
+        - api_token: []
+      tags:
+        - Authentication
+  '/api/v1/authn/factors/{factorId}/verify':
+    post:
+      consumes:
+        - application/json
+      description: >-
+        You can enroll, activate, manage, and verify factors inside the
+        authentication context with /api/v1/authn/factors. This operation is
+        only available for users that have not previously enrolled a factor and
+        have transitioned to the MFA_ENROLL state.
+      operationId: authVerifyFactor
+      parameters:
+        - in: path
+          name: factorId
+          required: true
+          type: string
+        - default: false
+          description: user’s decision to remember device
+          in: query
+          name: rememberDevice
+          type: boolean
+        - default: false
+          description: user’s decision to send push to device automatically
+          in: query
+          name: autoPush
+          type: boolean
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/AuthVerifyFactorRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AuthenticationTransaction'
+      security:
+        - api_token: []
+      tags:
+        - Authentication
 definitions:
   AppLink:
     properties:
@@ -3299,6 +3454,7 @@ definitions:
     enum:
       - SUCCESS
       - CHALLENGE
+      - CANCELLED
       - WAITING
       - FAILED
       - REJECTED
@@ -5514,3 +5670,134 @@ definitions:
     x-okta-parent: '#/definitions/ApplicationSettingsApplication'
     x-okta-tags:
       - Application
+  AuthenticationRequest:
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      audience:
+        type: string
+      relayState:
+        type: string
+      options:
+        $ref: '#/definitions/Options'
+      context:
+        $ref: '#/definitions/Context'
+      token:
+        type: string
+    x-okta-tags:
+      - Authentication
+  Options:
+    properties:
+      multiOptionalFactorEnroll:
+        type: boolean
+        nullable: true
+      warnBeforePasswordExpired:
+        type: boolean
+        nullable: true
+    x-okta-tags:
+      - Authentication
+  Context:
+    properties:
+      deviceToken:
+        type: string
+        maxLength: 32
+        nullable: true
+    x-okta-tags:
+      - Authentication
+  EnrollFactorRequest:
+    properties:
+      stateToken:
+        type: string
+      factorType:
+        $ref: '#/definitions/FactorType'
+      provider:
+        $ref: '#/definitions/FactorProvider'
+      profile:
+        $ref: '#/definitions/FactorProfile'
+    required:
+      - stateToken
+      - factorType
+      - provider
+      - profile
+    x-okta-tags:
+      - Authentication
+  ActivateFactorRequest:
+    properties:
+      stateToken:
+        type: string
+      passCode:
+        type: string
+      registrationData:
+        type: string
+      clientData:
+        type: string
+    x-okta-tags:
+      - Authentication
+  AuthVerifyFactorRequest:
+    properties:
+      stateToken:
+        type: string
+      answer:
+        type: string
+      passCode:
+        type: string
+      clientData:
+        type: string
+      signatureData:
+        type: string
+    x-okta-tags:
+      - Authentication
+  AuthenticationTransaction:
+    properties:
+      stateToken:
+        type: string
+        nullable: true
+      type:
+        type: string
+        nullable: true
+      sessionToken:
+        type: string
+        nullable: true
+      expiresAt:
+        type: string
+        nullable: true
+        format: date-time
+      status:
+        $ref: '#/definitions/TransactionState'
+      relayState:
+        type: string
+        maxLength: 2048
+      factorResult:
+        $ref: '#/definitions/FactorResultType'
+        nullable: true
+      _embedded:
+        additionalProperties:
+          type: object
+        readOnly: true
+        type: object
+      _links:
+        additionalProperties:
+          type: object
+        readOnly: true
+        type: object
+    x-okta-tags:
+      - Authentication
+  TransactionState:
+    enum:
+      - UNAUTHENTICATED
+      - PASSWORD_WARN
+      - PASSWORD_EXPIRED
+      - RECOVERY
+      - RECOVERY_CHALLENGE
+      - PASSWORD_RESET
+      - LOCKED_OUT
+      - MFA_ENROLL
+      - MFA_ENROLL_ACTIVATE
+      - MFA_REQUIRED
+      - MFA_CHALLENGE
+      - SUCCESS
+    type: string
+    x-okta-tags:
+      - Authentication
