@@ -53,6 +53,8 @@ mod request;
 
 mod application_api;
 pub use self::application_api::{ApplicationApi, ApplicationApiClient};
+mod authentication_api;
+pub use self::authentication_api::{AuthenticationApi, AuthenticationApiClient};
 mod group_api;
 pub use self::group_api::{GroupApi, GroupApiClient};
 mod log_api;

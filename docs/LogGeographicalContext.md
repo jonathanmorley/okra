@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **city** | **String** |  | [optional] 
 **country** | **String** |  | [optional] 
-**geolocation** | [***crate::models::LogGeolocation**](LogGeolocation.md) |  | [optional] 
+**geolocation** | [***cratecrate::models::LogGeolocation**](LogGeolocation.md) |  | [optional] 
 **postal_code** | **String** |  | [optional] 
 **state** | **String** |  | [optional] 
 

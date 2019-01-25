@@ -6,6 +6,7 @@ use hyper;
 pub struct APIClient<C: hyper::client::Connect> {
     configuration: Rc<Configuration<C>>,
     application_api: Box<crate::apis::ApplicationApi>,
+    authentication_api: Box<crate::apis::AuthenticationApi>,
     group_api: Box<crate::apis::GroupApi>,
     log_api: Box<crate::apis::LogApi>,
     policy_api: Box<crate::apis::PolicyApi>,
@@ -21,6 +22,7 @@ impl<C: hyper::client::Connect> APIClient<C> {
         APIClient {
             configuration: rc.clone(),
             application_api: Box::new(crate::apis::ApplicationApiClient::new(rc.clone())),
+            authentication_api: Box::new(crate::apis::AuthenticationApiClient::new(rc.clone())),
             group_api: Box::new(crate::apis::GroupApiClient::new(rc.clone())),
             log_api: Box::new(crate::apis::LogApiClient::new(rc.clone())),
             policy_api: Box::new(crate::apis::PolicyApiClient::new(rc.clone())),
@@ -32,6 +34,10 @@ impl<C: hyper::client::Connect> APIClient<C> {
 
     pub fn application_api(&self) -> &crate::apis::ApplicationApi {
         self.application_api.as_ref()
+    }
+
+    pub fn authentication_api(&self) -> &crate::apis::AuthenticationApi {
+        self.authentication_api.as_ref()
     }
 
     pub fn group_api(&self) -> &crate::apis::GroupApi {

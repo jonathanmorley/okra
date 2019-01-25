@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **activate_factor**
-> crate::models::Factor activate_factor(ctx, user_id, factor_id, body)
+> cratecrate::models::Factor activate_factor(ctx, user_id, factor_id, body)
 Activate Factor
 
 The `sms` and `token:software:totp` [factor types](#factor-type) require activation to complete the enrollment process.
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Factor**](Factor.md)
+[**cratecrate::models::Factor**](Factor.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_factor**
-> crate::models::Factor add_factor(ctx, user_id, body, optional)
+> cratecrate::models::Factor add_factor(ctx, user_id, body, optional)
 Enroll Factor
 
 Enrolls a user with a supported [factor](#list-factors-to-enroll)
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Factor**](Factor.md)
+[**cratecrate::models::Factor**](Factor.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_factor**
-> crate::models::Factor get_factor(ctx, user_id, factor_id)
+> cratecrate::models::Factor get_factor(ctx, user_id, factor_id)
 
 
 Fetches a factor for the specified user
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Factor**](Factor.md)
+[**cratecrate::models::Factor**](Factor.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_factors**
-> Vec<crate::models::Factor> list_factors(ctx, user_id)
+> Vec<cratecrate::models::Factor> list_factors(ctx, user_id)
 
 
 Enumerates all the enrolled factors for the specified user
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Factor>**](Factor.md)
+[**Vec<cratecrate::models::Factor>**](Factor.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_supported_factors**
-> Vec<crate::models::Factor> list_supported_factors(ctx, user_id)
+> Vec<cratecrate::models::Factor> list_supported_factors(ctx, user_id)
 
 
 Enumerates all the [supported factors](#supported-factors-for-providers) that can be enrolled for the specified user
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Factor>**](Factor.md)
+[**Vec<cratecrate::models::Factor>**](Factor.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_supported_security_questions**
-> Vec<crate::models::SecurityQuestion> list_supported_security_questions(ctx, user_id)
+> Vec<cratecrate::models::SecurityQuestion> list_supported_security_questions(ctx, user_id)
 
 
 Enumerates all available security questions for a user's `question` factor
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::SecurityQuestion>**](SecurityQuestion.md)
+[**Vec<cratecrate::models::SecurityQuestion>**](SecurityQuestion.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_factor**
-> crate::models::VerifyFactorResponse verify_factor(ctx, user_id, factor_id, body, optional)
+> cratecrate::models::VerifyFactorResponse verify_factor(ctx, user_id, factor_id, body, optional)
 Verify MFA Factor
 
 Verifies an OTP for a `token` or `token:hardware` factor
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::VerifyFactorResponse**](VerifyFactorResponse.md)
+[**cratecrate::models::VerifyFactorResponse**](VerifyFactorResponse.md)
 
 ### Authorization
 

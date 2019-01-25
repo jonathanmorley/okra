@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**geographical_context** | [***crate::models::LogGeographicalContext**](LogGeographicalContext.md) |  | [optional] 
+**geographical_context** | [***cratecrate::models::LogGeographicalContext**](LogGeographicalContext.md) |  | [optional] 
 **ip** | **String** |  | [optional] 
 **source** | **String** |  | [optional] 
 **version** | **String** |  | [optional] 

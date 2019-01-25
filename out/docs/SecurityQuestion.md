@@ -1,0 +1,12 @@
+# SecurityQuestion
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**answer** | **String** |  | [optional] 
+**question** | **String** |  | [optional] 
+**question_text** | **String** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

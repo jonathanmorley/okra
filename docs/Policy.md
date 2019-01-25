@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **priority** | **i32** |  | [optional] 
 **status** | **String** |  | [optional] 
 **system** | **bool** |  | [optional] 
-**_type** | [***crate::models::PolicyType**](PolicyType.md) |  | [optional] 
+**_type** | [***cratecrate::models::PolicyType**](PolicyType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_group**
-> crate::models::Group create_group(ctx, group)
+> cratecrate::models::Group create_group(ctx, group)
 Add Group
 
 Adds a new group with `OKTA_GROUP` type to your organization.
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Group**](Group.md)
+[**cratecrate::models::Group**](Group.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_rule**
-> crate::models::GroupRule create_rule(ctx, group_rule)
+> cratecrate::models::GroupRule create_rule(ctx, group_rule)
 Create Group Rule
 
 Creates a group rule to dynamically add users to the specified group if they match the condition
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::GroupRule**](GroupRule.md)
+[**cratecrate::models::GroupRule**](GroupRule.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_group**
-> crate::models::Group get_group(ctx, group_id, optional)
+> cratecrate::models::Group get_group(ctx, group_id, optional)
 List Group Rules
 
 Lists all group rules for your organization.
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Group**](Group.md)
+[**cratecrate::models::Group**](Group.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_rule**
-> crate::models::GroupRule get_rule(ctx, rule_id, optional)
+> cratecrate::models::GroupRule get_rule(ctx, rule_id, optional)
 Get Group Rule
 
 Fetches a specific group rule by id from your organization
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::GroupRule**](GroupRule.md)
+[**cratecrate::models::GroupRule**](GroupRule.md)
 
 ### Authorization
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_group_users**
-> Vec<crate::models::User> list_group_users(ctx, group_id, optional)
+> Vec<cratecrate::models::User> list_group_users(ctx, group_id, optional)
 List Group Members
 
 Enumerates all [users](/docs/api/resources/users.html#user-model) that are a member of a group.
@@ -327,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<cratecrate::models::User>**](User.md)
 
 ### Authorization
 
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_groups**
-> Vec<crate::models::Group> list_groups(ctx, optional)
+> Vec<cratecrate::models::Group> list_groups(ctx, optional)
 List Groups
 
 Enumerates groups in your organization with pagination. A subset of groups can be returned that match a supported filter expression or query.
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Group>**](Group.md)
+[**Vec<cratecrate::models::Group>**](Group.md)
 
 ### Authorization
 
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_rules**
-> Vec<crate::models::GroupRule> list_rules(ctx, optional)
+> Vec<cratecrate::models::GroupRule> list_rules(ctx, optional)
 List Group Rules
 
 Lists all group rules for your organization.
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::GroupRule>**](GroupRule.md)
+[**Vec<cratecrate::models::GroupRule>**](GroupRule.md)
 
 ### Authorization
 
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_group**
-> crate::models::Group update_group(ctx, group_id, group)
+> cratecrate::models::Group update_group(ctx, group_id, group)
 Update Group
 
 Updates the profile for a group with `OKTA_GROUP` type from your organization.
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Group**](Group.md)
+[**cratecrate::models::Group**](Group.md)
 
 ### Authorization
 
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_rule**
-> crate::models::GroupRule update_rule(ctx, rule_id, group_rule)
+> cratecrate::models::GroupRule update_rule(ctx, rule_id, group_rule)
 
 
 ### Required Parameters
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::GroupRule**](GroupRule.md)
+[**cratecrate::models::GroupRule**](GroupRule.md)
 
 ### Authorization
 

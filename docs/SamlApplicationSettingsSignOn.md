@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **assertion_signed** | **bool** |  | [optional] 
-**attribute_statements** | [**Vec<crate::models::SamlAttributeStatement>**](SamlAttributeStatement.md) |  | [optional] 
+**attribute_statements** | [**Vec<cratecrate::models::SamlAttributeStatement>**](SamlAttributeStatement.md) |  | [optional] 
 **audience** | **String** |  | [optional] 
 **audience_override** | **String** |  | [optional] 
 **authn_context_class_ref** | **String** |  | [optional] 

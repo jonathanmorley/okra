@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**people** | [***crate::models::PolicyPeopleCondition**](PolicyPeopleCondition.md) |  | [optional] 
+**people** | [***cratecrate::models::PolicyPeopleCondition**](PolicyPeopleCondition.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

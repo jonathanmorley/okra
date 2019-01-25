@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_logs**
-> Vec<crate::models::LogEvent> get_logs(ctx, optional)
+> Vec<cratecrate::models::LogEvent> get_logs(ctx, optional)
 Fetch a list of events from your Okta organization system log.
 
 The Okta System Log API provides read access to your organization’s system log. This API provides more functionality than the Events API
@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::LogEvent>**](LogEvent.md)
+[**Vec<cratecrate::models::LogEvent>**](LogEvent.md)
 
 ### Authorization
 

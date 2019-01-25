@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_policy_rule**
-> crate::models::PolicyRule add_policy_rule(ctx, policy_id, policy_rule, optional)
+> cratecrate::models::PolicyRule add_policy_rule(ctx, policy_id, policy_rule, optional)
 
 
 ### Required Parameters
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::PolicyRule**](PolicyRule.md)
+[**cratecrate::models::PolicyRule**](PolicyRule.md)
 
 ### Authorization
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_policy**
-> crate::models::Policy create_policy(ctx, policy, optional)
+> cratecrate::models::Policy create_policy(ctx, policy, optional)
 
 
 ### Required Parameters
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Policy**](Policy.md)
+[**cratecrate::models::Policy**](Policy.md)
 
 ### Authorization
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_policy**
-> crate::models::Policy get_policy(ctx, policy_id, optional)
+> cratecrate::models::Policy get_policy(ctx, policy_id, optional)
 
 
 ### Required Parameters
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Policy**](Policy.md)
+[**cratecrate::models::Policy**](Policy.md)
 
 ### Authorization
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_policy_rule**
-> crate::models::PolicyRule get_policy_rule(ctx, policy_id, rule_id)
+> cratecrate::models::PolicyRule get_policy_rule(ctx, policy_id, rule_id)
 
 
 ### Required Parameters
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::PolicyRule**](PolicyRule.md)
+[**cratecrate::models::PolicyRule**](PolicyRule.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policies**
-> Vec<crate::models::Policy> list_policies(ctx, _type, optional)
+> Vec<cratecrate::models::Policy> list_policies(ctx, _type, optional)
 
 
 ### Required Parameters
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Policy>**](Policy.md)
+[**Vec<cratecrate::models::Policy>**](Policy.md)
 
 ### Authorization
 
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policy_rules**
-> Vec<crate::models::PolicyRule> list_policy_rules(ctx, policy_id)
+> Vec<cratecrate::models::PolicyRule> list_policy_rules(ctx, policy_id)
 
 
 ### Required Parameters
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::PolicyRule>**](PolicyRule.md)
+[**Vec<cratecrate::models::PolicyRule>**](PolicyRule.md)
 
 ### Authorization
 
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_policy**
-> crate::models::Policy update_policy(ctx, policy_id, policy)
+> cratecrate::models::Policy update_policy(ctx, policy_id, policy)
 
 
 ### Required Parameters
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Policy**](Policy.md)
+[**cratecrate::models::Policy**](Policy.md)
 
 ### Authorization
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_policy_rule**
-> crate::models::PolicyRule update_policy_rule(ctx, policy_id, rule_id, policy_rule)
+> cratecrate::models::PolicyRule update_policy_rule(ctx, policy_id, rule_id, policy_rule)
 
 
 ### Required Parameters
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::PolicyRule**](PolicyRule.md)
+[**cratecrate::models::PolicyRule**](PolicyRule.md)
 
 ### Authorization
 

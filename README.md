@@ -295,7 +295,8 @@ docker run --rm -v $(pwd):$(pwd) -w $(pwd) openapitools/openapi-generator-cli ge
     -g rust \
     -o out
 ```
-
-2. Replace all `::models` with `crate::models` and `::apis` with `crate::apis`
-3. Replace all `__` with `_`
-4. Add some constructors to `apis::configuration::Configuration`
+2. Copy `out/src` over `src` and `out/docs` over `docs`
+3. Replace all `::models` with `crate::models` and `::apis` with `crate::apis`
+4. Replace all `__` with `_`
+5. Replace all `supercrate` with `crate`
+6. Add some constructors to `apis::configuration::Configuration`

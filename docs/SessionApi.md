@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_session**
-> crate::models::Session create_session(ctx, create_session_request)
+> cratecrate::models::Session create_session(ctx, create_session_request)
 Create Session with Session Token
 
 Creates a new session for a user with a valid session token. Use this API if, for example, you want to set the session cookie yourself instead of allowing Okta to set it, or want to hold the session ID in order to delete a session via the API instead of visiting the logout URL.
@@ -25,7 +25,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Session**](Session.md)
+[**cratecrate::models::Session**](Session.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_session**
-> crate::models::Session get_session(ctx, session_id)
+> cratecrate::models::Session get_session(ctx, session_id)
 
 
 Get details about a session.
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Session**](Session.md)
+[**cratecrate::models::Session**](Session.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **refresh_session**
-> crate::models::Session refresh_session(ctx, session_id)
+> cratecrate::models::Session refresh_session(ctx, session_id)
 Refresh Session
 
 ### Required Parameters
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Session**](Session.md)
+[**cratecrate::models::Session**](Session.md)
 
 ### Authorization
 
