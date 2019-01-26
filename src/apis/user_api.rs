@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct UserApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct UserApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> UserApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> UserApiClient<C> {
+impl UserApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> UserApiClient {
         UserApiClient {
             configuration: configuration,
         }
@@ -167,7 +167,7 @@ pub trait UserApi {
     ) -> Box<Future<Item = crate::models::User, Error = Error<serde_json::Value>>>;
 }
 
-impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
+impl UserApi for UserApiClient {
     fn activate_user(
         &self,
         user_id: &str,
@@ -175,7 +175,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
     ) -> Box<Future<Item = crate::models::UserActivationToken, Error = Error<serde_json::Value>>>
     {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/activate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -195,7 +195,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         group_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Put,
+            hyper::Method::PUT,
             "/api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -216,7 +216,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         role: crate::models::Role,
     ) -> Box<Future<Item = crate::models::Role, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/roles".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -235,7 +235,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         change_password_request: crate::models::ChangePasswordRequest,
     ) -> Box<Future<Item = crate::models::UserCredentials, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/credentials/change_password".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -254,7 +254,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_credentials: crate::models::UserCredentials,
     ) -> Box<Future<Item = crate::models::UserCredentials, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/credentials/change_recovery_question".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -274,7 +274,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         provider: bool,
         next_login: &str,
     ) -> Box<Future<Item = crate::models::User, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/users".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/users".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -292,7 +292,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_id: &str,
         send_email: bool,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/users/{userId}".to_string())
+        _internal_request::Request::new(hyper::Method::DELETE, "/api/v1/users/{userId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -310,7 +310,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         send_email: bool,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/deactivate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -330,7 +330,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         oauth_tokens: bool,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/users/{userId}/sessions".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -350,7 +350,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         temp_password: bool,
     ) -> Box<Future<Item = crate::models::TempPassword, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/expire_password".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -371,7 +371,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
     ) -> Box<Future<Item = crate::models::ForgotPasswordResponse, Error = Error<serde_json::Value>>>
     {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/credentials/forgot_password".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -389,7 +389,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         &self,
         user_id: &str,
     ) -> Box<Future<Item = crate::models::User, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/users/{userId}".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/users/{userId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -405,7 +405,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         show_all: bool,
     ) -> Box<Future<Item = Vec<crate::models::AppLink>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/appLinks".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -424,7 +424,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         expand: &str,
     ) -> Box<Future<Item = Vec<crate::models::Role>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/roles".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -445,7 +445,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         limit: i32,
     ) -> Box<Future<Item = Vec<crate::models::Group>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/roles/{roleId}/targets/groups".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -467,7 +467,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         limit: i32,
     ) -> Box<Future<Item = Vec<crate::models::Group>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/groups".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -491,7 +491,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         search: &str,
         expand: &str,
     ) -> Box<Future<Item = Vec<crate::models::User>, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/users".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/users".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -514,7 +514,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         group_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -535,7 +535,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         role_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/users/{userId}/roles/{roleId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -554,7 +554,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/reset_factors".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -575,7 +575,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
     ) -> Box<Future<Item = crate::models::ResetPasswordToken, Error = Error<serde_json::Value>>>
     {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/reset_password".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -594,7 +594,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/suspend".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -612,7 +612,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/unlock".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -630,7 +630,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/lifecycle/unsuspend".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -648,7 +648,7 @@ impl<C: hyper::client::Connect> UserApi for UserApiClient<C> {
         user_id: &str,
         user: crate::models::User,
     ) -> Box<Future<Item = crate::models::User, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Put, "/api/v1/users/{userId}".to_string())
+        _internal_request::Request::new(hyper::Method::PUT, "/api/v1/users/{userId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,

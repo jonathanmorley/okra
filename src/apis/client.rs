@@ -1,10 +1,8 @@
 use std::rc::Rc;
 
 use super::configuration::Configuration;
-use hyper;
 
-pub struct APIClient<C: hyper::client::Connect> {
-    configuration: Rc<Configuration<C>>,
+pub struct APIClient {
     application_api: Box<crate::apis::ApplicationApi>,
     authentication_api: Box<crate::apis::AuthenticationApi>,
     group_api: Box<crate::apis::GroupApi>,
@@ -15,12 +13,11 @@ pub struct APIClient<C: hyper::client::Connect> {
     user_factor_api: Box<crate::apis::UserFactorApi>,
 }
 
-impl<C: hyper::client::Connect> APIClient<C> {
-    pub fn new(configuration: Configuration<C>) -> APIClient<C> {
+impl APIClient {
+    pub fn new(configuration: Configuration) -> Self {
         let rc = Rc::new(configuration);
 
         APIClient {
-            configuration: rc.clone(),
             application_api: Box::new(crate::apis::ApplicationApiClient::new(rc.clone())),
             authentication_api: Box::new(crate::apis::AuthenticationApiClient::new(rc.clone())),
             group_api: Box::new(crate::apis::GroupApiClient::new(rc.clone())),

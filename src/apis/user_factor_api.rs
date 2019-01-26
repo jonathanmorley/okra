@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct UserFactorApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct UserFactorApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> UserFactorApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> UserFactorApiClient<C> {
+impl UserFactorApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> UserFactorApiClient {
         UserFactorApiClient {
             configuration: configuration,
         }
@@ -78,7 +78,7 @@ pub trait UserFactorApi {
     ) -> Box<Future<Item = crate::models::VerifyFactorResponse, Error = Error<serde_json::Value>>>;
 }
 
-impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
+impl UserFactorApi for UserFactorApiClient {
     fn activate_factor(
         &self,
         user_id: &str,
@@ -86,7 +86,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
         body: crate::models::VerifyFactorRequest,
     ) -> Box<Future<Item = crate::models::Factor, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/factors/{factorId}/lifecycle/activate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -110,7 +110,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
         activate: bool,
     ) -> Box<Future<Item = crate::models::Factor, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/factors".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -136,7 +136,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
         factor_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/users/{userId}/factors/{factorId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -156,7 +156,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
         factor_id: &str,
     ) -> Box<Future<Item = crate::models::Factor, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/factors/{factorId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -174,7 +174,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = Vec<crate::models::Factor>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/factors".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -191,7 +191,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = Vec<crate::models::Factor>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/factors/catalog".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -209,7 +209,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
     ) -> Box<Future<Item = Vec<crate::models::SecurityQuestion>, Error = Error<serde_json::Value>>>
     {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/users/{userId}/factors/questions".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -231,7 +231,7 @@ impl<C: hyper::client::Connect> UserFactorApi for UserFactorApiClient<C> {
     ) -> Box<Future<Item = crate::models::VerifyFactorResponse, Error = Error<serde_json::Value>>>
     {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/users/{userId}/factors/{factorId}/verify".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {

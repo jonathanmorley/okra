@@ -4,8 +4,7 @@ use serde_json;
 
 #[derive(Debug)]
 pub enum Error<T> {
-    UriError(hyper::error::UriError),
-    Hyper(hyper::Error),
+    Reqwest(reqwest::Error),
     Serde(serde_json::Error),
     ApiError(ApiError<T>),
 }
@@ -37,9 +36,9 @@ where
     }
 }
 
-impl<T> From<hyper::Error> for Error<T> {
-    fn from(e: hyper::Error) -> Self {
-        return Error::Hyper(e);
+impl<T> From<reqwest::Error> for Error<T> {
+    fn from(e: reqwest::Error) -> Self {
+        return Error::Reqwest(e);
     }
 }
 

@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct ApplicationApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct ApplicationApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> ApplicationApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> ApplicationApiClient<C> {
+impl ApplicationApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> ApplicationApiClient {
         ApplicationApiClient {
             configuration: configuration,
         }
@@ -151,13 +151,13 @@ pub trait ApplicationApi {
     ) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>>;
 }
 
-impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
+impl ApplicationApi for ApplicationApiClient {
     fn activate_application(
         &self,
         app_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/apps/{appId}/lifecycle/activate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -176,7 +176,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         app_user: crate::models::AppUser,
     ) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/apps/{appId}/users".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -196,7 +196,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         target_aid: &str,
     ) -> Box<Future<Item = crate::models::JsonWebKey, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/apps/{appId}/credentials/keys/{keyId}/clone".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -215,7 +215,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         application: crate::models::Application,
         activate: bool,
     ) -> Box<Future<Item = crate::models::Application, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/apps".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/apps".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -235,7 +235,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         Future<Item = crate::models::ApplicationGroupAssignment, Error = Error<serde_json::Value>>,
     > {
         _internal_request::Request::new(
-            hyper::Method::Put,
+            hyper::Method::PUT,
             "/api/v1/apps/{appId}/groups/{groupId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -254,7 +254,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         app_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/apps/{appId}/lifecycle/deactivate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -271,7 +271,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         &self,
         app_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Delete, "/api/v1/apps/{appId}".to_string())
+        _internal_request::Request::new(hyper::Method::DELETE, "/api/v1/apps/{appId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -288,7 +288,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         group_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/apps/{appId}/groups/{groupId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -309,7 +309,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         send_email: bool,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/apps/{appId}/users/{userId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -329,7 +329,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         app_id: &str,
         expand: &str,
     ) -> Box<Future<Item = crate::models::Application, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps/{appId}".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/apps/{appId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -349,7 +349,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         Future<Item = crate::models::ApplicationGroupAssignment, Error = Error<serde_json::Value>>,
     > {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/apps/{appId}/groups/{groupId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -369,7 +369,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         key_id: &str,
     ) -> Box<Future<Item = crate::models::JsonWebKey, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/apps/{appId}/credentials/keys/{keyId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -389,7 +389,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         expand: &str,
     ) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/apps/{appId}/users/{userId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -417,7 +417,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         >,
     > {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/apps/{appId}/groups".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -438,7 +438,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         app_id: &str,
     ) -> Box<Future<Item = Vec<crate::models::JsonWebKey>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/apps/{appId}/credentials/keys".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -461,7 +461,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         expand: &str,
     ) -> Box<Future<Item = Vec<crate::models::AppUser>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/apps/{appId}/users".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -488,7 +488,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         expand: &str,
         include_non_deleted: bool,
     ) -> Box<Future<Item = Vec<crate::models::Application>, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/apps".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/apps".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -511,7 +511,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         app_id: &str,
         application: crate::models::Application,
     ) -> Box<Future<Item = crate::models::Application, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Put, "/api/v1/apps/{appId}".to_string())
+        _internal_request::Request::new(hyper::Method::PUT, "/api/v1/apps/{appId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -529,7 +529,7 @@ impl<C: hyper::client::Connect> ApplicationApi for ApplicationApiClient<C> {
         app_user: crate::models::AppUser,
     ) -> Box<Future<Item = crate::models::AppUser, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/apps/{appId}/users/{userId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {

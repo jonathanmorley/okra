@@ -1,4 +1,4 @@
-/* 
+/*
  * Okta API
  *
  * Allows customers to easily access the Okta API
@@ -13,23 +13,7 @@
 use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct UserNextLogin {
+#[serde(rename_all = "camelCase")]
+pub enum UserNextLogin {
+    ChangePassword
 }
-
-impl UserNextLogin {
-  pub fn new() -> UserNextLogin {
-    UserNextLogin {
-    }
-  }
-
-}
-
-// TODO enum 
-// List of UserNextLogin
-//const (
-//  
-//  
-//  
-//)
-
-

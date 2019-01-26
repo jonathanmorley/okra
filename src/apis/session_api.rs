@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct SessionApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct SessionApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> SessionApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> SessionApiClient<C> {
+impl SessionApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> SessionApiClient {
         SessionApiClient {
             configuration: configuration,
         }
@@ -49,12 +49,12 @@ pub trait SessionApi {
     ) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>>;
 }
 
-impl<C: hyper::client::Connect> SessionApi for SessionApiClient<C> {
+impl SessionApi for SessionApiClient {
     fn create_session(
         &self,
         create_session_request: crate::models::CreateSessionRequest,
     ) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/sessions".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/sessions".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -69,7 +69,7 @@ impl<C: hyper::client::Connect> SessionApi for SessionApiClient<C> {
         session_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/sessions/{sessionId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -87,7 +87,7 @@ impl<C: hyper::client::Connect> SessionApi for SessionApiClient<C> {
         session_id: &str,
     ) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/sessions/{sessionId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -104,7 +104,7 @@ impl<C: hyper::client::Connect> SessionApi for SessionApiClient<C> {
         session_id: &str,
     ) -> Box<Future<Item = crate::models::Session, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/sessions/{sessionId}/lifecycle/refresh".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {

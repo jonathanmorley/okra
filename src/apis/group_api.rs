@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct GroupApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct GroupApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> GroupApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> GroupApiClient<C> {
+impl GroupApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> GroupApiClient {
         GroupApiClient {
             configuration: configuration,
         }
@@ -109,13 +109,13 @@ pub trait GroupApi {
     ) -> Box<Future<Item = crate::models::GroupRule, Error = Error<serde_json::Value>>>;
 }
 
-impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
+impl GroupApi for GroupApiClient {
     fn activate_rule(
         &self,
         rule_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/groups/rules/{ruleId}/lifecycle/activate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -134,7 +134,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Put,
+            hyper::Method::PUT,
             "/api/v1/groups/{groupId}/users/{userId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -152,7 +152,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         &self,
         group: crate::models::Group,
     ) -> Box<Future<Item = crate::models::Group, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/groups".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/groups".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -166,7 +166,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         &self,
         group_rule: crate::models::GroupRule,
     ) -> Box<Future<Item = crate::models::GroupRule, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/groups/rules".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/groups/rules".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -181,7 +181,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         rule_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/groups/rules/{ruleId}/lifecycle/deactivate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -199,7 +199,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         group_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/groups/{groupId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -218,7 +218,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         remove_users: bool,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/groups/rules/{ruleId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -237,7 +237,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         group_id: &str,
         expand: &str,
     ) -> Box<Future<Item = crate::models::Group, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/groups/{groupId}".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/groups/{groupId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -254,7 +254,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         expand: &str,
     ) -> Box<Future<Item = crate::models::GroupRule, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/groups/rules/{ruleId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -275,7 +275,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         managed_by: &str,
     ) -> Box<Future<Item = Vec<crate::models::User>, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Get,
+            hyper::Method::GET,
             "/api/v1/groups/{groupId}/users".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -298,7 +298,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         limit: i32,
         expand: &str,
     ) -> Box<Future<Item = Vec<crate::models::Group>, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/groups".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/groups".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -318,7 +318,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         after: &str,
         expand: &str,
     ) -> Box<Future<Item = Vec<crate::models::GroupRule>, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/groups/rules".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/groups/rules".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -336,7 +336,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         user_id: &str,
     ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Delete,
+            hyper::Method::DELETE,
             "/api/v1/groups/{groupId}/users/{userId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -355,7 +355,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         group_id: &str,
         group: crate::models::Group,
     ) -> Box<Future<Item = crate::models::Group, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Put, "/api/v1/groups/{groupId}".to_string())
+        _internal_request::Request::new(hyper::Method::PUT, "/api/v1/groups/{groupId}".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -372,7 +372,7 @@ impl<C: hyper::client::Connect> GroupApi for GroupApiClient<C> {
         group_rule: crate::models::GroupRule,
     ) -> Box<Future<Item = crate::models::GroupRule, Error = Error<serde_json::Value>>> {
         _internal_request::Request::new(
-            hyper::Method::Put,
+            hyper::Method::PUT,
             "/api/v1/groups/rules/{ruleId}".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {

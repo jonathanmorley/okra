@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct LogApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct LogApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> LogApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> LogApiClient<C> {
+impl LogApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> LogApiClient {
         LogApiClient {
             configuration: configuration,
         }
@@ -43,7 +43,7 @@ pub trait LogApi {
     ) -> Box<Future<Item = Vec<crate::models::LogEvent>, Error = Error<serde_json::Value>>>;
 }
 
-impl<C: hyper::client::Connect> LogApi for LogApiClient<C> {
+impl LogApi for LogApiClient {
     fn get_logs(
         &self,
         until: &str,
@@ -54,7 +54,7 @@ impl<C: hyper::client::Connect> LogApi for LogApiClient<C> {
         sort_order: &str,
         after: &str,
     ) -> Box<Future<Item = Vec<crate::models::LogEvent>, Error = Error<serde_json::Value>>> {
-        _internal_request::Request::new(hyper::Method::Get, "/api/v1/logs".to_string())
+        _internal_request::Request::new(hyper::Method::GET, "/api/v1/logs".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,

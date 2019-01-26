@@ -18,12 +18,12 @@ use serde_json;
 use super::request as _internal_request;
 use super::{configuration, Error};
 
-pub struct AuthenticationApiClient<C: hyper::client::Connect> {
-    configuration: Rc<configuration::Configuration<C>>,
+pub struct AuthenticationApiClient {
+    configuration: Rc<configuration::Configuration>,
 }
 
-impl<C: hyper::client::Connect> AuthenticationApiClient<C> {
-    pub fn new(configuration: Rc<configuration::Configuration<C>>) -> AuthenticationApiClient<C> {
+impl AuthenticationApiClient {
+    pub fn new(configuration: Rc<configuration::Configuration>) -> AuthenticationApiClient {
         AuthenticationApiClient {
             configuration: configuration,
         }
@@ -67,7 +67,7 @@ pub trait AuthenticationApi {
     >;
 }
 
-impl<C: hyper::client::Connect> AuthenticationApi for AuthenticationApiClient<C> {
+impl AuthenticationApi for AuthenticationApiClient {
     fn auth_activate_factor(
         &self,
         factor_id: &str,
@@ -76,7 +76,7 @@ impl<C: hyper::client::Connect> AuthenticationApi for AuthenticationApiClient<C>
         Future<Item = crate::models::AuthenticationTransaction, Error = Error<serde_json::Value>>,
     > {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/authn/factors/{factorId}/lifecycle/activate".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -96,7 +96,7 @@ impl<C: hyper::client::Connect> AuthenticationApi for AuthenticationApiClient<C>
         Future<Item = crate::models::AuthenticationTransaction, Error = Error<serde_json::Value>>,
     > {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/authn/credentials/change_password".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -118,7 +118,7 @@ impl<C: hyper::client::Connect> AuthenticationApi for AuthenticationApiClient<C>
         Future<Item = crate::models::AuthenticationTransaction, Error = Error<serde_json::Value>>,
     > {
         _internal_request::Request::new(
-            hyper::Method::Post,
+            hyper::Method::POST,
             "/api/v1/authn/factors/{factorId}/verify".to_string(),
         )
         .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
@@ -139,7 +139,7 @@ impl<C: hyper::client::Connect> AuthenticationApi for AuthenticationApiClient<C>
     ) -> Box<
         Future<Item = crate::models::AuthenticationTransaction, Error = Error<serde_json::Value>>,
     > {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/authn".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/authn".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
@@ -155,7 +155,7 @@ impl<C: hyper::client::Connect> AuthenticationApi for AuthenticationApiClient<C>
     ) -> Box<
         Future<Item = crate::models::AuthenticationTransaction, Error = Error<serde_json::Value>>,
     > {
-        _internal_request::Request::new(hyper::Method::Post, "/api/v1/authn/factors".to_string())
+        _internal_request::Request::new(hyper::Method::POST, "/api/v1/authn/factors".to_string())
             .with_auth(_internal_request::Auth::ApiKey(_internal_request::ApiKey {
                 in_header: true,
                 in_query: false,
