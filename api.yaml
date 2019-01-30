@@ -5686,6 +5686,8 @@ definitions:
         $ref: '#/definitions/Context'
       token:
         type: string
+      stateToken:
+        type: string
     x-okta-tags:
       - Authentication
   Options:

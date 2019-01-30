@@ -19,11 +19,11 @@ use super::request as _internal_request;
 use super::{configuration, Error};
 
 pub struct ApplicationApiClient {
-    configuration: Rc<configuration::Configuration>,
+    configuration: configuration::Configuration,
 }
 
 impl ApplicationApiClient {
-    pub fn new(configuration: Rc<configuration::Configuration>) -> ApplicationApiClient {
+    pub fn new(configuration: configuration::Configuration) -> ApplicationApiClient {
         ApplicationApiClient {
             configuration: configuration,
         }

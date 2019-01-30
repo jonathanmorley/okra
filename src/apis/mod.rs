@@ -58,6 +58,8 @@ mod group_api;
 pub use self::group_api::{GroupApi, GroupApiClient};
 mod log_api;
 pub use self::log_api::{LogApi, LogApiClient};
+mod login_api;
+pub use self::login_api::{LoginApi, LoginApiClient};
 mod policy_api;
 pub use self::policy_api::{PolicyApi, PolicyApiClient};
 mod session_api;

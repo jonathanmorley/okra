@@ -92,14 +92,10 @@ impl Request {
         self
     }
 
-    pub fn execute<'a, U>(
+    pub fn response(
         self,
         conf: &configuration::Configuration,
-    ) -> Box<Future<Item = U, Error = Error<serde_json::Value>> + 'a>
-    where
-        U: Sized + 'a,
-        for<'de> U: serde::Deserialize<'de>,
-    {
+    ) -> Result<reqwest::Response, Error<serde_json::Value>> {
         let mut path = self.path.clone();
         for (k, v) in self.path_params.iter() {
             // replace {id} with the value of the id path param
@@ -113,6 +109,15 @@ impl Request {
         for (k, v) in self.header_params.iter() {
             req = req.header(k.as_str(), v.as_str());
         }
+
+        let cookies = conf
+            .cookies
+            .iter()
+            .map(|(k, v)| format!("{}={}", k, v))
+            .collect::<Vec<String>>()
+            .join(";");
+
+        req = req.header("Cookie", cookies);
 
         for pair in self.query_params.iter() {
             req = req.query(&[pair]);
@@ -155,21 +160,20 @@ impl Request {
             req = req.header("Content-Type", "application/json").body(body);
         }
 
-        let res = req.send().map_err(|e| Error::from(e)).and_then(|mut resp| {
-            let status = resp.status();
-            if status.is_success() {
-                if self.no_return_type {
-                    serde_json::from_str("null").map_err(|e| e.into())
-                } else {
-                    resp.json().map_err(|e| e.into())
-                }
-            } else {
-                match resp.text() {
-                    Ok(body) => Err(Error::from((status, body.as_bytes()))),
-                    Err(e) => Err(e.into()),
-                }
-            }
-        });
+        req.send()?.error_for_status().map_err(|e| e.into())
+    }
+
+    pub fn execute<'a, U>(
+        self,
+        conf: &configuration::Configuration,
+    ) -> Box<Future<Item = U, Error = Error<serde_json::Value>> + 'a>
+    where
+        U: Sized + 'a,
+        for<'de> U: serde::Deserialize<'de>,
+    {
+        let res = self
+            .response(conf)
+            .and_then(|mut resp| resp.json().map_err(|e| e.into()));
 
         Box::new(futures::future::result(res))
     }
