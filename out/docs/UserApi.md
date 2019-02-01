@@ -4,35 +4,35 @@ All URIs are relative to *https://your-subdomain.okta.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activate_user**](UserApi.md#activate_user) | **Post** /api/v1/users/{userId}/lifecycle/activate | Activate User
-[**add_group_target_to_role**](UserApi.md#add_group_target_to_role) | **Put** /api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId} | 
-[**add_role_to_user**](UserApi.md#add_role_to_user) | **Post** /api/v1/users/{userId}/roles | 
-[**change_password**](UserApi.md#change_password) | **Post** /api/v1/users/{userId}/credentials/change_password | Change Password
-[**change_recovery_question**](UserApi.md#change_recovery_question) | **Post** /api/v1/users/{userId}/credentials/change_recovery_question | Change Recovery Question
-[**create_user**](UserApi.md#create_user) | **Post** /api/v1/users | Create User
-[**deactivate_or_delete_user**](UserApi.md#deactivate_or_delete_user) | **Delete** /api/v1/users/{userId} | Delete User
-[**deactivate_user**](UserApi.md#deactivate_user) | **Post** /api/v1/users/{userId}/lifecycle/deactivate | Deactivate User
-[**end_all_user_sessions**](UserApi.md#end_all_user_sessions) | **Delete** /api/v1/users/{userId}/sessions | 
-[**expire_password**](UserApi.md#expire_password) | **Post** /api/v1/users/{userId}/lifecycle/expire_password | Expire Password
-[**forgot_password**](UserApi.md#forgot_password) | **Post** /api/v1/users/{userId}/credentials/forgot_password | Forgot Password
-[**get_user**](UserApi.md#get_user) | **Get** /api/v1/users/{userId} | Get User
-[**list_app_links**](UserApi.md#list_app_links) | **Get** /api/v1/users/{userId}/appLinks | Get Assigned App Links
-[**list_assigned_roles**](UserApi.md#list_assigned_roles) | **Get** /api/v1/users/{userId}/roles | 
-[**list_group_targets_for_role**](UserApi.md#list_group_targets_for_role) | **Get** /api/v1/users/{userId}/roles/{roleId}/targets/groups | 
-[**list_user_groups**](UserApi.md#list_user_groups) | **Get** /api/v1/users/{userId}/groups | Get Member Groups
-[**list_users**](UserApi.md#list_users) | **Get** /api/v1/users | List Users
-[**remove_group_target_from_role**](UserApi.md#remove_group_target_from_role) | **Delete** /api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId} | 
-[**remove_role_from_user**](UserApi.md#remove_role_from_user) | **Delete** /api/v1/users/{userId}/roles/{roleId} | 
-[**reset_all_factors**](UserApi.md#reset_all_factors) | **Post** /api/v1/users/{userId}/lifecycle/reset_factors | Reset Factors
-[**reset_password**](UserApi.md#reset_password) | **Post** /api/v1/users/{userId}/lifecycle/reset_password | Reset Password
-[**suspend_user**](UserApi.md#suspend_user) | **Post** /api/v1/users/{userId}/lifecycle/suspend | Suspend User
-[**unlock_user**](UserApi.md#unlock_user) | **Post** /api/v1/users/{userId}/lifecycle/unlock | Unlock User
-[**unsuspend_user**](UserApi.md#unsuspend_user) | **Post** /api/v1/users/{userId}/lifecycle/unsuspend | Unsuspend User
-[**update_user**](UserApi.md#update_user) | **Put** /api/v1/users/{userId} | Update User
+[**activate_user**](UserApi.md#activate_user) | **post** /api/v1/users/{userId}/lifecycle/activate | Activate User
+[**add_group_target_to_role**](UserApi.md#add_group_target_to_role) | **put** /api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId} | 
+[**add_role_to_user**](UserApi.md#add_role_to_user) | **post** /api/v1/users/{userId}/roles | 
+[**change_password**](UserApi.md#change_password) | **post** /api/v1/users/{userId}/credentials/change_password | Change Password
+[**change_recovery_question**](UserApi.md#change_recovery_question) | **post** /api/v1/users/{userId}/credentials/change_recovery_question | Change Recovery Question
+[**create_user**](UserApi.md#create_user) | **post** /api/v1/users | Create User
+[**deactivate_or_delete_user**](UserApi.md#deactivate_or_delete_user) | **delete** /api/v1/users/{userId} | Delete User
+[**deactivate_user**](UserApi.md#deactivate_user) | **post** /api/v1/users/{userId}/lifecycle/deactivate | Deactivate User
+[**end_all_user_sessions**](UserApi.md#end_all_user_sessions) | **delete** /api/v1/users/{userId}/sessions | 
+[**expire_password**](UserApi.md#expire_password) | **post** /api/v1/users/{userId}/lifecycle/expire_password | Expire Password
+[**forgot_password**](UserApi.md#forgot_password) | **post** /api/v1/users/{userId}/credentials/forgot_password | Forgot Password
+[**get_user**](UserApi.md#get_user) | **get** /api/v1/users/{userId} | Get User
+[**list_app_links**](UserApi.md#list_app_links) | **get** /api/v1/users/{userId}/appLinks | Get Assigned App Links
+[**list_assigned_roles**](UserApi.md#list_assigned_roles) | **get** /api/v1/users/{userId}/roles | 
+[**list_group_targets_for_role**](UserApi.md#list_group_targets_for_role) | **get** /api/v1/users/{userId}/roles/{roleId}/targets/groups | 
+[**list_user_groups**](UserApi.md#list_user_groups) | **get** /api/v1/users/{userId}/groups | Get Member Groups
+[**list_users**](UserApi.md#list_users) | **get** /api/v1/users | List Users
+[**remove_group_target_from_role**](UserApi.md#remove_group_target_from_role) | **delete** /api/v1/users/{userId}/roles/{roleId}/targets/groups/{groupId} | 
+[**remove_role_from_user**](UserApi.md#remove_role_from_user) | **delete** /api/v1/users/{userId}/roles/{roleId} | 
+[**reset_all_factors**](UserApi.md#reset_all_factors) | **post** /api/v1/users/{userId}/lifecycle/reset_factors | Reset Factors
+[**reset_password**](UserApi.md#reset_password) | **post** /api/v1/users/{userId}/lifecycle/reset_password | Reset Password
+[**suspend_user**](UserApi.md#suspend_user) | **post** /api/v1/users/{userId}/lifecycle/suspend | Suspend User
+[**unlock_user**](UserApi.md#unlock_user) | **post** /api/v1/users/{userId}/lifecycle/unlock | Unlock User
+[**unsuspend_user**](UserApi.md#unsuspend_user) | **post** /api/v1/users/{userId}/lifecycle/unsuspend | Unsuspend User
+[**update_user**](UserApi.md#update_user) | **put** /api/v1/users/{userId} | Update User
 
 
 # **activate_user**
-> crate::models::UserActivationToken activate_user(ctx, user_id, send_email)
+> ::models::UserActivationToken activate_user(ctx, user_id, send_email)
 Activate User
 
 Activates a user.  This operation can only be performed on users with a `STAGED` status.  Activation of a user is an asynchronous operation. The user will have the `transitioningToStatus` property with a value of `ACTIVE` during activation to indicate that the user hasn't completed the asynchronous operation.  The user will have a status of `ACTIVE` when the activation process is complete.
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::UserActivationToken**](UserActivationToken.md)
+[**::models::UserActivationToken**](UserActivationToken.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_role_to_user**
-> crate::models::Role add_role_to_user(ctx, user_id, role)
+> ::models::Role add_role_to_user(ctx, user_id, role)
 
 
 Assigns a role to a user.
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Role**](Role.md)
+[**::models::Role**](Role.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **change_password**
-> crate::models::UserCredentials change_password(ctx, user_id, change_password_request)
+> ::models::UserCredentials change_password(ctx, user_id, change_password_request)
 Change Password
 
 Changes a user's password by validating the user's current password. This operation can only be performed on users in `STAGED`, `ACTIVE`, `PASSWORD_EXPIRED`, or `RECOVERY` status that have a valid [password credential](#password-object)
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::UserCredentials**](UserCredentials.md)
+[**::models::UserCredentials**](UserCredentials.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **change_recovery_question**
-> crate::models::UserCredentials change_recovery_question(ctx, user_id, user_credentials)
+> ::models::UserCredentials change_recovery_question(ctx, user_id, user_credentials)
 Change Recovery Question
 
 Changes a user's recovery question & answer credential by validating the user's current password.  This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** `status` that have a valid [password credential](#password-object)
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::UserCredentials**](UserCredentials.md)
+[**::models::UserCredentials**](UserCredentials.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_user**
-> crate::models::User create_user(ctx, body, optional)
+> ::models::User create_user(ctx, body, optional)
 Create User
 
 Creates a new user in your Okta organization with or without credentials.
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::User**](User.md)
+[**::models::User**](User.md)
 
 ### Authorization
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **expire_password**
-> crate::models::TempPassword expire_password(ctx, user_id, optional)
+> ::models::TempPassword expire_password(ctx, user_id, optional)
 Expire Password
 
 This operation transitions the user to the status of `PASSWORD_EXPIRED` so that the user is required to change their password at their next login.
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::TempPassword**](TempPassword.md)
+[**::models::TempPassword**](TempPassword.md)
 
 ### Authorization
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forgot_password**
-> crate::models::ForgotPasswordResponse forgot_password(ctx, user_id, optional)
+> ::models::ForgotPasswordResponse forgot_password(ctx, user_id, optional)
 Forgot Password
 
 Generates a one-time token (OTT) that can be used to reset a user's password.  The user will be required to validate their security question's answer when visiting the reset link.  This operation can only be performed on users with a valid [recovery question credential](#recovery-question-object) and have an `ACTIVE` status.
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::ForgotPasswordResponse**](ForgotPasswordResponse.md)
+[**::models::ForgotPasswordResponse**](ForgotPasswordResponse.md)
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user**
-> crate::models::User get_user(ctx, user_id)
+> ::models::User get_user(ctx, user_id)
 Get User
 
 Fetches a user from your Okta organization.
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::User**](User.md)
+[**::models::User**](User.md)
 
 ### Authorization
 
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_app_links**
-> Vec<crate::models::AppLink> list_app_links(ctx, user_id, optional)
+> Vec<::models::AppLink> list_app_links(ctx, user_id, optional)
 Get Assigned App Links
 
 Fetches appLinks for all direct or indirect (via group membership) assigned applications.
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::AppLink>**](AppLink.md)
+[**Vec<::models::AppLink>**](AppLink.md)
 
 ### Authorization
 
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assigned_roles**
-> Vec<crate::models::Role> list_assigned_roles(ctx, user_id, optional)
+> Vec<::models::Role> list_assigned_roles(ctx, user_id, optional)
 
 
 Lists all roles assigned to a user.
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Role>**](Role.md)
+[**Vec<::models::Role>**](Role.md)
 
 ### Authorization
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_group_targets_for_role**
-> Vec<crate::models::Group> list_group_targets_for_role(ctx, user_id, role_id, optional)
+> Vec<::models::Group> list_group_targets_for_role(ctx, user_id, role_id, optional)
 
 
 ### Required Parameters
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Group>**](Group.md)
+[**Vec<::models::Group>**](Group.md)
 
 ### Authorization
 
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_groups**
-> Vec<crate::models::Group> list_user_groups(ctx, user_id, optional)
+> Vec<::models::Group> list_user_groups(ctx, user_id, optional)
 Get Member Groups
 
 Fetches the groups of which the user is a member.
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Group>**](Group.md)
+[**Vec<::models::Group>**](Group.md)
 
 ### Authorization
 
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_users**
-> Vec<crate::models::User> list_users(ctx, optional)
+> Vec<::models::User> list_users(ctx, optional)
 List Users
 
 Lists users in your organization with pagination in most cases.  A subset of users can be returned that match a supported filter expression or search criteria.
@@ -606,7 +606,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<::models::User>**](User.md)
 
 ### Authorization
 
@@ -705,7 +705,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reset_password**
-> crate::models::ResetPasswordToken reset_password(ctx, user_id, optional)
+> ::models::ResetPasswordToken reset_password(ctx, user_id, optional)
 Reset Password
 
 Generates a one-time token (OTT) that can be used to reset a user's password.  The OTT link can be automatically emailed to the user or returned to the API caller and distributed using a custom flow.
@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::ResetPasswordToken**](ResetPasswordToken.md)
+[**::models::ResetPasswordToken**](ResetPasswordToken.md)
 
 ### Authorization
 
@@ -827,7 +827,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> crate::models::User update_user(ctx, user_id, user)
+> ::models::User update_user(ctx, user_id, user)
 Update User
 
 Update a user's profile and/or credentials using strict-update semantics.
@@ -842,7 +842,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::User**](User.md)
+[**::models::User**](User.md)
 
 ### Authorization
 

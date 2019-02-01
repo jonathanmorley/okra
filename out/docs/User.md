@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **_links** | [**::std::collections::HashMap<String, Value>**](Value.md) |  | [optional] 
 **activated** | **String** |  | [optional] 
 **created** | **String** |  | [optional] 
-**credentials** | [***crate::models::UserCredentials**](UserCredentials.md) |  | [optional] 
+**credentials** | [***::models::UserCredentials**](UserCredentials.md) |  | [optional] 
 **id** | **String** |  | [optional] 
 **last_login** | **String** |  | [optional] 
 **last_updated** | **String** |  | [optional] 
 **password_changed** | **String** |  | [optional] 
-**profile** | [***crate::models::UserProfile**](UserProfile.md) |  | [optional] 
-**status** | [***crate::models::UserStatus**](UserStatus.md) |  | [optional] 
+**profile** | [***::models::UserProfile**](UserProfile.md) |  | [optional] 
+**status** | [***::models::UserStatus**](UserStatus.md) |  | [optional] 
 **status_changed** | **String** |  | [optional] 
-**transitioning_to_status** | [***crate::models::UserStatus**](UserStatus.md) |  | [optional] 
+**transitioning_to_status** | [***::models::UserStatus**](UserStatus.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **factor_prompt_mode** | **String** |  | [optional] 
 **remember_device_by_default** | **bool** |  | [optional] [default to false]
 **require_factor** | **bool** |  | [optional] [default to false]
-**session** | [***crate::models::OktaSignOnPolicyRuleSignonSessionActions**](OktaSignOnPolicyRuleSignonSessionActions.md) |  | [optional] 
+**session** | [***::models::OktaSignOnPolicyRuleSignonSessionActions**](OktaSignOnPolicyRuleSignonSessionActions.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

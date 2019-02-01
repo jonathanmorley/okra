@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **_type** | **String** |  | [optional] 
 **session_token** | **String** |  | [optional] 
 **expires_at** | **String** |  | [optional] 
-**status** | [***crate::models::TransactionState**](TransactionState.md) |  | [optional] 
+**status** | [***::models::TransactionState**](TransactionState.md) |  | [optional] 
 **relay_state** | **String** |  | [optional] 
-**factor_result** | [***crate::models::FactorResultType**](FactorResultType.md) |  | [optional] 
+**factor_result** | [***::models::FactorResultType**](FactorResultType.md) |  | [optional] 
 **_embedded** | [**::std::collections::HashMap<String, Value>**](Value.md) |  | [optional] 
 **_links** | [**::std::collections::HashMap<String, Value>**](Value.md) |  | [optional] 
 

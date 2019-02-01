@@ -2,4 +2,5 @@
 extern crate serde_derive;
 
 pub mod apis;
-pub mod models;
+
+include!(concat!(env!("OUT_DIR"), "/mod.rs"));

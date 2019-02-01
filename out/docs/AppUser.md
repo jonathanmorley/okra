@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **_embedded** | [**::std::collections::HashMap<String, Value>**](Value.md) |  | [optional] 
 **_links** | [**::std::collections::HashMap<String, Value>**](Value.md) |  | [optional] 
 **created** | **String** |  | [optional] 
-**credentials** | [***crate::models::AppUserCredentials**](AppUserCredentials.md) |  | [optional] 
+**credentials** | [***::models::AppUserCredentials**](AppUserCredentials.md) |  | [optional] 
 **external_id** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
 **last_sync** | **String** |  | [optional] 

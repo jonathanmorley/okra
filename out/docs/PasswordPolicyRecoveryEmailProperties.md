@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**recovery_token** | [***crate::models::PasswordPolicyRecoveryEmailRecoveryToken**](PasswordPolicyRecoveryEmailRecoveryToken.md) |  | [optional] 
+**recovery_token** | [***::models::PasswordPolicyRecoveryEmailRecoveryToken**](PasswordPolicyRecoveryEmailRecoveryToken.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

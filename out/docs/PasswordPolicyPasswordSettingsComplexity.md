@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dictionary** | [***crate::models::PasswordDictionary**](PasswordDictionary.md) |  | [optional] 
+**dictionary** | [***::models::PasswordDictionary**](PasswordDictionary.md) |  | [optional] 
 **exclude_attributes** | **Vec<String>** |  | [optional] 
 **exclude_username** | **bool** |  | [optional] [default to true]
 **min_length** | **i32** |  | [optional] 

@@ -4,18 +4,18 @@ All URIs are relative to *https://your-subdomain.okta.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activate_factor**](UserFactorApi.md#activate_factor) | **Post** /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate | Activate Factor
-[**add_factor**](UserFactorApi.md#add_factor) | **Post** /api/v1/users/{userId}/factors | Enroll Factor
-[**delete_factor**](UserFactorApi.md#delete_factor) | **Delete** /api/v1/users/{userId}/factors/{factorId} | 
-[**get_factor**](UserFactorApi.md#get_factor) | **Get** /api/v1/users/{userId}/factors/{factorId} | 
-[**list_factors**](UserFactorApi.md#list_factors) | **Get** /api/v1/users/{userId}/factors | 
-[**list_supported_factors**](UserFactorApi.md#list_supported_factors) | **Get** /api/v1/users/{userId}/factors/catalog | 
-[**list_supported_security_questions**](UserFactorApi.md#list_supported_security_questions) | **Get** /api/v1/users/{userId}/factors/questions | 
-[**verify_factor**](UserFactorApi.md#verify_factor) | **Post** /api/v1/users/{userId}/factors/{factorId}/verify | Verify MFA Factor
+[**activate_factor**](UserFactorApi.md#activate_factor) | **post** /api/v1/users/{userId}/factors/{factorId}/lifecycle/activate | Activate Factor
+[**add_factor**](UserFactorApi.md#add_factor) | **post** /api/v1/users/{userId}/factors | Enroll Factor
+[**delete_factor**](UserFactorApi.md#delete_factor) | **delete** /api/v1/users/{userId}/factors/{factorId} | 
+[**get_factor**](UserFactorApi.md#get_factor) | **get** /api/v1/users/{userId}/factors/{factorId} | 
+[**list_factors**](UserFactorApi.md#list_factors) | **get** /api/v1/users/{userId}/factors | 
+[**list_supported_factors**](UserFactorApi.md#list_supported_factors) | **get** /api/v1/users/{userId}/factors/catalog | 
+[**list_supported_security_questions**](UserFactorApi.md#list_supported_security_questions) | **get** /api/v1/users/{userId}/factors/questions | 
+[**verify_factor**](UserFactorApi.md#verify_factor) | **post** /api/v1/users/{userId}/factors/{factorId}/verify | Verify MFA Factor
 
 
 # **activate_factor**
-> crate::models::Factor activate_factor(ctx, user_id, factor_id, body)
+> ::models::Factor activate_factor(ctx, user_id, factor_id, body)
 Activate Factor
 
 The `sms` and `token:software:totp` [factor types](#factor-type) require activation to complete the enrollment process.
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Factor**](Factor.md)
+[**::models::Factor**](Factor.md)
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_factor**
-> crate::models::Factor add_factor(ctx, user_id, body, optional)
+> ::models::Factor add_factor(ctx, user_id, body, optional)
 Enroll Factor
 
 Enrolls a user with a supported [factor](#list-factors-to-enroll)
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Factor**](Factor.md)
+[**::models::Factor**](Factor.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_factor**
-> crate::models::Factor get_factor(ctx, user_id, factor_id)
+> ::models::Factor get_factor(ctx, user_id, factor_id)
 
 
 Fetches a factor for the specified user
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::Factor**](Factor.md)
+[**::models::Factor**](Factor.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_factors**
-> Vec<crate::models::Factor> list_factors(ctx, user_id)
+> Vec<::models::Factor> list_factors(ctx, user_id)
 
 
 Enumerates all the enrolled factors for the specified user
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Factor>**](Factor.md)
+[**Vec<::models::Factor>**](Factor.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_supported_factors**
-> Vec<crate::models::Factor> list_supported_factors(ctx, user_id)
+> Vec<::models::Factor> list_supported_factors(ctx, user_id)
 
 
 Enumerates all the [supported factors](#supported-factors-for-providers) that can be enrolled for the specified user
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::Factor>**](Factor.md)
+[**Vec<::models::Factor>**](Factor.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_supported_security_questions**
-> Vec<crate::models::SecurityQuestion> list_supported_security_questions(ctx, user_id)
+> Vec<::models::SecurityQuestion> list_supported_security_questions(ctx, user_id)
 
 
 Enumerates all available security questions for a user's `question` factor
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<crate::models::SecurityQuestion>**](SecurityQuestion.md)
+[**Vec<::models::SecurityQuestion>**](SecurityQuestion.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_factor**
-> crate::models::VerifyFactorResponse verify_factor(ctx, user_id, factor_id, body, optional)
+> ::models::VerifyFactorResponse verify_factor(ctx, user_id, factor_id, body, optional)
 Verify MFA Factor
 
 Verifies an OTP for a `token` or `token:hardware` factor
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**crate::models::VerifyFactorResponse**](VerifyFactorResponse.md)
+[**::models::VerifyFactorResponse**](VerifyFactorResponse.md)
 
 ### Authorization
 

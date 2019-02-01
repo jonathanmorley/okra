@@ -1,5 +1,3 @@
-use std::rc::Rc;
-
 use crate::apis::configuration::Configuration;
 
 pub struct APIClient {
