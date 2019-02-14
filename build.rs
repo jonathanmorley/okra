@@ -1,3 +1,3 @@
 fn main() {
-    openapi_codegen::build_client("openapi.yaml").unwrap();
+    openapi_codegen::client("openapi.yaml", "src/okta", true).unwrap();
 }

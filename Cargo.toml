@@ -21,9 +21,9 @@ reqwest = "0.9"
 failure = "*"
 
 [build-dependencies]
-openapi-codegen = { path = "../openapi-codegen" }
+openapi-codegen = { git = "https://github.com/jonathanmorley/openapi-codegen-rs", branch = "master" }
 
 [dev-dependencies]
-testcontainers = { git = "https://github.com/testcontainers/testcontainers-rs", branch = "master" }
-tc_generic = { git = "https://github.com/testcontainers/testcontainers-rs", branch = "master" }
-tc_core = { git = "https://github.com/testcontainers/testcontainers-rs", branch = "master" }
+testcontainers = "0.5"
+tc_generic = "0.1"
+tc_core = "0.2"
