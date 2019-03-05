@@ -647,10 +647,15 @@ mod tests {
     
 
     fn client() -> super::UserApiClient {
-        let docker = clients::Cli::default();
+        std::process::Command::new("docker")
+                  .args(&["build", "-t=test-apisprout", "."])
+                  .output()
+                  .expect("failed to execute process");
+
+        let testcontainer_docker = clients::Cli::default();
         let image = GenericImage::new("test-apisprout:latest")
             .with_wait_for(WaitFor::message_on_stdout("Sprouting"));
-        let server = docker.run(image);
+        let server = testcontainer_docker.run(image);
         let host_port = server.get_host_port(8000).unwrap();
         let url = format!("http://localhost:{}", host_port);
         let configuration = Configuration::new(url);

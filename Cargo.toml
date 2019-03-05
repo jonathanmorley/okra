@@ -24,6 +24,6 @@ failure = "*"
 openapi-codegen = { git = "https://github.com/jonathanmorley/openapi-codegen-rs", branch = "master" }
 
 [dev-dependencies]
-testcontainers = "0.5"
-tc_generic = "0.1"
-tc_core = "0.2"
+testcontainers = "0.6"
+tc_generic = "0.2"
+tc_core = "0.3"
