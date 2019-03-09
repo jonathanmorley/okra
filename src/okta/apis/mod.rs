@@ -50,19 +50,19 @@ impl<T> From<serde_json::Error> for Error<T> {
 
 pub mod request;
 pub mod configuration;
-mod application_api;
-pub use self::application_api::r#ApplicationApiClient;
 mod authentication_api;
 pub use self::authentication_api::r#AuthenticationApiClient;
-mod session_api;
-pub use self::session_api::r#SessionApiClient;
-mod group_api;
-pub use self::group_api::r#GroupApiClient;
-mod user_factor_api;
-pub use self::user_factor_api::r#UserFactorApiClient;
 mod log_api;
 pub use self::log_api::r#LogApiClient;
+mod session_api;
+pub use self::session_api::r#SessionApiClient;
+mod application_api;
+pub use self::application_api::r#ApplicationApiClient;
+mod group_api;
+pub use self::group_api::r#GroupApiClient;
 mod policy_api;
 pub use self::policy_api::r#PolicyApiClient;
+mod user_factor_api;
+pub use self::user_factor_api::r#UserFactorApiClient;
 mod user_api;
 pub use self::user_api::r#UserApiClient;
