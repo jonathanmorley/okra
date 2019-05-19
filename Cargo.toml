@@ -1,6 +1,6 @@
 [package]
 name = "okra"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Morley, Jonathan <morley.jonathan@gmail.com>"]
 edition = "2018"
 description = "Rust API client for Okta."
