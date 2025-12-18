@@ -24,6 +24,6 @@ failure = "0.1"
 openapi-codegen = "0.1"
 
 [dev-dependencies]
-testcontainers = "0.6"
-tc_generic = "0.2"
-tc_core = "0.3"
+testcontainers = "=0.6.0"
+tc_generic = "=0.2.0"
+tc_core = "=0.3.0"
