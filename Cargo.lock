@@ -1845,9 +1845,9 @@ dependencies = [
 
 [[package]]
 name = "tc_core"
-version = "0.3.0"
+version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c8631251ee272fdb26083a0a2e62bbbb8712da60da485a4f56c1d90afeedd5f"
+checksum = "13043d5679d6b0f98d8354100c86be63dada10d3fc90a6f87ee30f31ed686d63"
 dependencies = [
  "debug_stub_derive",
  "log",
