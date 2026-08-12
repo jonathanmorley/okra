@@ -1874,9 +1874,9 @@ dependencies = [
 
 [[package]]
 name = "tc_generic"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72c08ce4f1ded9804bd25a9e9732244e127dd8fb4ac723becf3cda5d23b4370d"
+checksum = "e11aceb71ec9817a185b671ea2ad560488e0c440d21da516e784557fe64c9f6d"
 dependencies = [
  "tc_core",
 ]
