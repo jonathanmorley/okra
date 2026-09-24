@@ -1043,7 +1043,7 @@ dependencies = [
  "tc_generic",
  "testcontainers",
  "tokio-core",
- "url 1.7.2",
+ "url 2.5.8",
 ]
 
 [[package]]
