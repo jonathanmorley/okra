@@ -17,7 +17,7 @@ hyper = "0.12"
 base64 = "0.10"
 futures = "0.1"
 tokio-core = "0.1"
-reqwest = "0.9"
+reqwest = "0.13"
 failure = "0.1"
 
 [build-dependencies]
